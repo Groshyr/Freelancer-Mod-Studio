@@ -12,7 +12,7 @@ namespace FreelancerModStudio.Data
 {
     public class Settings
     {
-        const int CURRENT_VERSION = 2;
+        const int CURRENT_VERSION = 3;
         //const string FREELANCER_REGISTRY_KEY = "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Microsoft Games\\Freelancer\\1.0";
         //const string FREELANCER_REGISTRY_VALUE = "AppPath";
 
@@ -234,7 +234,7 @@ namespace FreelancerModStudio.Data
             {
                 AutoUpdate.CheckInterval = 28;
                 AutoUpdate.SilentDownload = false;
-                AutoUpdate.UpdateFile = @"https://github.com/Groshyr/FreelancerModStudio/releases";
+                AutoUpdate.UpdateFile = @"https://raw.githubusercontent.com/Groshyr/FreelancerModStudio/master/updates.txt";
             }
         }
 

@@ -241,7 +241,7 @@ end;
 
 function IsIA64: boolean;
 begin
-	Result := Is64BitInstallMode and (ProcessorArchitecture = paIA64);
+	Result := false;
 end;
 
 function GetString(x86, x64, ia64: String): String;
