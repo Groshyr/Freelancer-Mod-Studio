@@ -31,6 +31,9 @@ namespace FreelancerModStudio
 
         readonly UndoManager<ChangedData> _undoManager = new UndoManager<ChangedData>();
 
+        string _lastFindText;
+        int _lastFindIndex = -1;
+
         public ViewerType ViewerType { get; set; }
         public ArchetypeManager Archetype { get; set; }
 
@@ -128,6 +131,101 @@ namespace FreelancerModStudio
             }
 
             RefreshSettings();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.F))
+            {
+                ShowFindDialog();
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        void ShowFindDialog()
+        {
+            Form dialog = new Form
+                {
+                    Text = "Find in file",
+                    FormBorderStyle = FormBorderStyle.FixedDialog,
+                    MaximizeBox = false,
+                    MinimizeBox = false,
+                    ShowInTaskbar = false,
+                    StartPosition = FormStartPosition.CenterParent,
+                    ClientSize = new Size(360, 88)
+                };
+
+            Label label = new Label { Text = "Find:", AutoSize = true, Location = new Point(12, 15) };
+            TextBox textBox = new TextBox { Location = new Point(52, 12), Size = new Size(296, 20), Text = _lastFindText ?? string.Empty };
+            Label status = new Label { AutoSize = false, Location = new Point(12, 43), Size = new Size(230, 20) };
+            Button findButton = new Button { Text = "Find next", Location = new Point(248, 40), Size = new Size(100, 27) };
+
+            findButton.Click += delegate
+                {
+                    string text = textBox.Text.Trim();
+                    if (text.Length == 0)
+                    {
+                        status.Text = "Enter text to find.";
+                        return;
+                    }
+
+                    if (!string.Equals(_lastFindText, text, StringComparison.OrdinalIgnoreCase))
+                    {
+                        _lastFindText = text;
+                        _lastFindIndex = objectListView1.SelectedObject == null ? -1 : objectListView1.IndexOf(objectListView1.SelectedObject);
+                    }
+
+                    if (FindNext(text))
+                    {
+                        status.Text = "Match selected.";
+                    }
+                    else
+                    {
+                        status.Text = "No matches found.";
+                    }
+                };
+
+            dialog.Controls.AddRange(new Control[] { label, textBox, status, findButton });
+            dialog.AcceptButton = findButton;
+            Helper.UI.ApplyFont(dialog);
+            dialog.ShowDialog(this);
+        }
+
+        bool FindNext(string text)
+        {
+            if (Data == null || Data.Blocks.Count == 0)
+            {
+                return false;
+            }
+
+            for (int offset = 1; offset <= Data.Blocks.Count; ++offset)
+            {
+                int index = (_lastFindIndex + offset) % Data.Blocks.Count;
+                TableBlock block = Data.Blocks[index];
+                if (BlockMatches(block, text))
+                {
+                    _lastFindIndex = index;
+                    Select(block, false);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        static bool BlockMatches(TableBlock block, string text)
+        {
+            return ContainsIgnoreCase(block.Name, text) ||
+                   ContainsIgnoreCase(block.Group, text) ||
+                   ContainsIgnoreCase(block.Block.Name, text) ||
+                   ContainsIgnoreCase(block.ToolTip, text);
+        }
+
+        static bool ContainsIgnoreCase(string value, string text)
+        {
+            return !string.IsNullOrEmpty(value) && value.IndexOf(text, StringComparison.OrdinalIgnoreCase) >= 0;
         }
 
         void SetTheme()
