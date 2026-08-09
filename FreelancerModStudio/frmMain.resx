@@ -146,7 +146,7 @@
     <value>&amp;Track selected</value>
   </data>
   <data name="mnuFocusSelected.ShortcutKeyDisplayString" xml:space="preserve">
-    <value />
+    <value>Ctrl+Shift+T</value>
   </data>
   <data name="&gt;&gt;mnuWindows.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -589,7 +589,7 @@
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="mnuFocusSelected.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+F</value>
+    <value>Ctrl+Shift+T</value>
   </data>
   <data name="mnuSolutionExplorer.Text" xml:space="preserve">
     <value>&amp;Solution Explorer</value>
