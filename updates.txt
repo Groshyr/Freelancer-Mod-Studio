@@ -1,1 +1,1 @@
-1.4.1.0;https://github.com/Groshyr/FreelancerModStudio/releases/download/v1.4.1/FreelancerModStudio-1.4.1.exe;0
+1.4.2.0;https://github.com/Groshyr/FreelancerModStudio/releases/download/v1.4.2/FreelancerModStudio-1.4.2.exe;0
