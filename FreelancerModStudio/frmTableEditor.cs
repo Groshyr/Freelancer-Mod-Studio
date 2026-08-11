@@ -135,7 +135,7 @@ namespace FreelancerModStudio
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == (Keys.Control | Keys.F))
+            if (keyData == (Keys.Control | Keys.Shift | Keys.F))
             {
                 ShowFindDialog();
                 return true;
