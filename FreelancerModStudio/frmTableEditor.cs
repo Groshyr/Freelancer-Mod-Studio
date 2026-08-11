@@ -133,17 +133,6 @@ namespace FreelancerModStudio
             RefreshSettings();
         }
 
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            if (keyData == (Keys.Control | Keys.Shift | Keys.F))
-            {
-                ShowFindDialog();
-                return true;
-            }
-
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
-
         void ShowFindDialog()
         {
             Form dialog = new Form

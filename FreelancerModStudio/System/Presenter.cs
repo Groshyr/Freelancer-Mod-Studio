@@ -596,15 +596,15 @@ namespace FreelancerModStudio.SystemPresenter
                         {
                             this.LookAtSelected();
                         }
+                        else
+                        {
+                            this.FocusSelected();
+                        }
                     }
 
                     break;
                 case Key.T:
-                    if (!isKeyUp && !e.IsRepeat && isCtrl && isShift && !isAlt)
-                    {
-                        this.FocusSelected();
-                    }
-                    else if (!isKeyUp && !e.IsRepeat && !isCtrl && !isAlt)
+                    if (!isKeyUp && !e.IsRepeat && !isCtrl && !isAlt)
                     {
                         this.TrackSelected();
                     }
