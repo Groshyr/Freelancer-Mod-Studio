@@ -234,7 +234,7 @@ namespace FreelancerModStudio.Data
             {
                 AutoUpdate.CheckInterval = 28;
                 AutoUpdate.SilentDownload = false;
-                AutoUpdate.UpdateFile = @"https://raw.githubusercontent.com/Groshyr/FreelancerModStudio/master/updates.txt";
+                AutoUpdate.UpdateFile = @"https://raw.githubusercontent.com/Groshyr/Freelancer-Mod-Studio/master/updates.txt";
             }
         }
 

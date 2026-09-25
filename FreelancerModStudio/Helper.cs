@@ -62,7 +62,7 @@ namespace FreelancerModStudio
 
         internal struct Update
         {
-            public const string ReleasesUrl = "https://github.com/Groshyr/FreelancerModStudio/releases";
+            public const string ReleasesUrl = "https://github.com/Groshyr/Freelancer-Mod-Studio/releases";
 
             public static AutoUpdate.AutoUpdate AutoUpdate = new AutoUpdate.AutoUpdate();
 

@@ -14,7 +14,7 @@ namespace FreelancerModStudio
             FixLayout();
 
             Text = string.Format(Strings.AboutText, Helper.Assembly.Name);
-            lblProductName.Text = "FreelancerModStudio";
+            lblProductName.Text = "Freelancer Mod Studio";
             lblVersion.Text = string.Format(Strings.AboutVersion, Helper.Assembly.Version);
             lblCopyright.Text = "Copyright © stfx 2009 - 2013;\r\n" +
                                 "Copyright © FreelancerAftermath 2020;\r\n" +
